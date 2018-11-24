@@ -1,0 +1,422 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DCAF901F21A7EE5000329453 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAF901E21A7EE5000329453 /* AppDelegate.m */; };
+		DCAF902721A7EE5200329453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCAF902621A7EE5200329453 /* Assets.xcassets */; };
+		DCAF902A21A7EE5200329453 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCAF902821A7EE5200329453 /* LaunchScreen.storyboard */; };
+		DCAF902D21A7EE5200329453 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAF902C21A7EE5200329453 /* main.m */; };
+		DCAF903E21A7EED100329453 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAF903C21A7EED100329453 /* MainViewController.m */; };
+		DCAF903F21A7EED100329453 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCAF903D21A7EED100329453 /* MainViewController.xib */; };
+		DCF88C0A21A9432700D4D1DF /* GaScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF88C0821A9432700D4D1DF /* GaScanView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DCAF901A21A7EE5000329453 /* GaScanViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GaScanViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCAF901D21A7EE5000329453 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		DCAF901E21A7EE5000329453 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		DCAF902621A7EE5200329453 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DCAF902921A7EE5200329453 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DCAF902B21A7EE5200329453 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DCAF902C21A7EE5200329453 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DCAF903B21A7EED100329453 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		DCAF903C21A7EED100329453 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		DCAF903D21A7EED100329453 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		DCF88C0821A9432700D4D1DF /* GaScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GaScanView.m; sourceTree = "<group>"; };
+		DCF88C0921A9432700D4D1DF /* GaScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GaScanView.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DCAF901721A7EE5000329453 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DCAF901121A7EE5000329453 = {
+			isa = PBXGroup;
+			children = (
+				DCAF901C21A7EE5000329453 /* GaScanViewDemo */,
+				DCAF901B21A7EE5000329453 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DCAF901B21A7EE5000329453 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DCAF901A21A7EE5000329453 /* GaScanViewDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DCAF901C21A7EE5000329453 /* GaScanViewDemo */ = {
+			isa = PBXGroup;
+			children = (
+				DCAF903621A7EEAF00329453 /* 1_Macro */,
+				DCAF903821A7EEAF00329453 /* 2_Interface */,
+				DCAF903721A7EEAF00329453 /* 3_Model */,
+				DCAF903321A7EEAF00329453 /* 4_Module */,
+				DCAF903921A7EEAF00329453 /* 5_Resource */,
+				DCAF903A21A7EEAF00329453 /* 6_Utility */,
+				DCAF901D21A7EE5000329453 /* AppDelegate.h */,
+				DCAF901E21A7EE5000329453 /* AppDelegate.m */,
+				DCAF902621A7EE5200329453 /* Assets.xcassets */,
+				DCAF902821A7EE5200329453 /* LaunchScreen.storyboard */,
+				DCAF902B21A7EE5200329453 /* Info.plist */,
+				DCAF902C21A7EE5200329453 /* main.m */,
+			);
+			path = GaScanViewDemo;
+			sourceTree = "<group>";
+		};
+		DCAF903321A7EEAF00329453 /* 4_Module */ = {
+			isa = PBXGroup;
+			children = (
+				DCAF903421A7EEAF00329453 /* Main */,
+			);
+			path = 4_Module;
+			sourceTree = "<group>";
+		};
+		DCAF903421A7EEAF00329453 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				DCAF903521A7EEAF00329453 /* MainViewController */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		DCAF903521A7EEAF00329453 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DCAF903B21A7EED100329453 /* MainViewController.h */,
+				DCAF903C21A7EED100329453 /* MainViewController.m */,
+				DCAF903D21A7EED100329453 /* MainViewController.xib */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		DCAF903621A7EEAF00329453 /* 1_Macro */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = 1_Macro;
+			sourceTree = "<group>";
+		};
+		DCAF903721A7EEAF00329453 /* 3_Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = 3_Model;
+			sourceTree = "<group>";
+		};
+		DCAF903821A7EEAF00329453 /* 2_Interface */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = 2_Interface;
+			sourceTree = "<group>";
+		};
+		DCAF903921A7EEAF00329453 /* 5_Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = 5_Resource;
+			sourceTree = "<group>";
+		};
+		DCAF903A21A7EEAF00329453 /* 6_Utility */ = {
+			isa = PBXGroup;
+			children = (
+				DCF88C0621A9432700D4D1DF /* GaLib */,
+			);
+			path = 6_Utility;
+			sourceTree = "<group>";
+		};
+		DCF88C0621A9432700D4D1DF /* GaLib */ = {
+			isa = PBXGroup;
+			children = (
+				DCF88C0721A9432700D4D1DF /* GaScanView */,
+			);
+			path = GaLib;
+			sourceTree = SOURCE_ROOT;
+		};
+		DCF88C0721A9432700D4D1DF /* GaScanView */ = {
+			isa = PBXGroup;
+			children = (
+				DCF88C0821A9432700D4D1DF /* GaScanView.m */,
+				DCF88C0921A9432700D4D1DF /* GaScanView.h */,
+			);
+			path = GaScanView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DCAF901921A7EE5000329453 /* GaScanViewDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DCAF903021A7EE5200329453 /* Build configuration list for PBXNativeTarget "GaScanViewDemo" */;
+			buildPhases = (
+				DCAF901621A7EE5000329453 /* Sources */,
+				DCAF901721A7EE5000329453 /* Frameworks */,
+				DCAF901821A7EE5000329453 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GaScanViewDemo;
+			productName = GaCustomDemo;
+			productReference = DCAF901A21A7EE5000329453 /* GaScanViewDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DCAF901221A7EE5000329453 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = GikkiAres;
+				TargetAttributes = {
+					DCAF901921A7EE5000329453 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = DCAF901521A7EE5000329453 /* Build configuration list for PBXProject "GaScanViewDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DCAF901121A7EE5000329453;
+			productRefGroup = DCAF901B21A7EE5000329453 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DCAF901921A7EE5000329453 /* GaScanViewDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DCAF901821A7EE5000329453 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCAF902A21A7EE5200329453 /* LaunchScreen.storyboard in Resources */,
+				DCAF903F21A7EED100329453 /* MainViewController.xib in Resources */,
+				DCAF902721A7EE5200329453 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DCAF901621A7EE5000329453 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCAF902D21A7EE5200329453 /* main.m in Sources */,
+				DCAF903E21A7EED100329453 /* MainViewController.m in Sources */,
+				DCAF901F21A7EE5000329453 /* AppDelegate.m in Sources */,
+				DCF88C0A21A9432700D4D1DF /* GaScanView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DCAF902821A7EE5200329453 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DCAF902921A7EE5200329453 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DCAF902E21A7EE5200329453 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		DCAF902F21A7EE5200329453 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DCAF903121A7EE5200329453 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XQ57WG7GVX;
+				INFOPLIST_FILE = "$(SRCROOT)/GaScanViewDemo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = GikkiAres.GaScanViewDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DCAF903221A7EE5200329453 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XQ57WG7GVX;
+				INFOPLIST_FILE = "$(SRCROOT)/GaScanViewDemo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = GikkiAres.GaScanViewDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DCAF901521A7EE5000329453 /* Build configuration list for PBXProject "GaScanViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DCAF902E21A7EE5200329453 /* Debug */,
+				DCAF902F21A7EE5200329453 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DCAF903021A7EE5200329453 /* Build configuration list for PBXNativeTarget "GaScanViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DCAF903121A7EE5200329453 /* Debug */,
+				DCAF903221A7EE5200329453 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DCAF901221A7EE5000329453 /* Project object */;
+}
