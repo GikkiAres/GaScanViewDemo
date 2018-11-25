@@ -8,7 +8,11 @@
 
 
 #import "GaScanView.h"
+#import "GaScanMaskView.h"
 #import <AVFoundation/AVFoundation.h>
+
+#define kGaScanView_HardwareTint @"未检测到摄像设备"
+#define kGaScanView_NoAuthorizationTint @"请在设置中打开照片权限"
 
 @interface  GaScanView ()<
 AVCaptureMetadataOutputObjectsDelegate
@@ -20,50 +24,110 @@ AVCaptureMetadataOutputObjectsDelegate
 @property (nonatomic,strong) CALayer *imageLayer;
 @property (nonatomic,strong) UIImageView *imageView;
 @property (nonatomic,strong) AVCaptureDeviceInput *input;
+@property (nonatomic,strong) UILabel *lbTint;
+@property (nonatomic,strong) GaScanMaskView *scanMaskView;
+@property (nonatomic,assign) CGRect rcInterest;
+@property (nonatomic,assign) CGSize sizeInterestRc;
+@property (nonatomic,assign) CGPoint ptInterestRcCenter;
 
 @end
 
 @implementation GaScanView
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    
     if (self =[super initWithCoder:aDecoder]) {
-        [self commonInit];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self commonInit];
+        });
     }
     return self;
 }
 
 - (void) commonInit {
-    dispatch_async(dispatch_get_main_queue()
-                   , ^{
-                       [self checkHasAuthority];
-                       AVCaptureDevice * device =[self cameraWithPosition:AVCaptureDevicePositionFront];
-                       [self displayVedioFromDevice:device];
-                       [self layoutSubviews];
-                       [self setLimitInterestRect:self->_limitInterestRect];
-                       
-                       
-                       [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(adjustOrientation) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
-                   });
+    // 先判断摄像头硬件是否好用
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        //读取媒体类型
+        NSString *mediaType = AVMediaTypeVideo;
+        //读取设备授权状态
+        AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];
+        switch (authStatus) {
+            case AVAuthorizationStatusRestricted:{
+                NSLog(@"拒绝授权,restricted");
+                [self initAsNoAuthorization];
+                break;
+            }
+            case AVAuthorizationStatusDenied: {
+                NSLog(@"拒绝授权,denied");
+                [self initAsNoAuthorization];
+                break;
+            }
+            case AVAuthorizationStatusNotDetermined:{
+                NSLog(@"第一次运行,未决定权限");
+                __weak typeof (self) weakSelf = self;
+                [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+                    if(granted) {
+                        NSLog(@"获取到权限");
+                        [weakSelf initNormal];
+                    }
+                    else {
+                        NSLog(@"没有获取到权限");
+                        [weakSelf initAsNoAuthorization];
+                    }
+                }];
+                break;
+            }
+            case AVAuthorizationStatusAuthorized:{
+                NSLog(@"已授权");
+                [self initNormal];
+                break;
+            }
+            default:
+                break;
+        }
+    }
+    else {
+        [self initAsNoCamera];
+    }
 }
 
-//判断是否开启相机权限
-- (void)checkHasAuthority {
-    //读取媒体类型
-    NSString *mediaType = AVMediaTypeVideo;
-    //读取设备授权状态
-    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];
-    if(authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied){
-        if([_delegate respondsToSelector:@selector(gaScanViewNotGetAuthoration:)]) {
-            [_delegate gaScanViewNotGetAuthoration:self];
-        }
-        //    return;
-    }
-    else if(authStatus == AVAuthorizationStatusNotDetermined) {
-        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
-            NSLog(@"111");
-        }];
+//没有检测到摄像头的初始化
+- (void)initAsNoCamera {
+    [self showLabelWithText:kGaScanView_HardwareTint];
+}
+
+//没有权限的初始化
+- (void)initAsNoAuthorization {
+    [self showLabelWithText:kGaScanView_NoAuthorizationTint];
+    if([self.delegate respondsToSelector:@selector(gaScanViewNotGetAuthoration:)]) {
+        [self.delegate gaScanViewNotGetAuthoration:self];
     }
 }
+
+//正常初始化
+- (void)initNormal {
+    AVCaptureDevice * device =[self cameraWithPosition:AVCaptureDevicePositionFront];
+    _scanMaskView = [[GaScanMaskView alloc]init];
+    [self displayVedioFromDevice:device];
+    [self layoutSubviews];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(adjustOrientation) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
+}
+
+- (void)showLabelWithText:(NSString *)text {
+    UILabel *lb = _lbTint;
+    if(!lb) {
+        lb = [UILabel new];
+        [self addSubview:lb];
+    }
+    lb.frame = self.bounds;
+    lb.text = text;
+    lb.numberOfLines = 0;
+    lb.font = [UIFont systemFontOfSize:30];
+    lb.textAlignment = NSTextAlignmentCenter;
+    lb.textColor = [UIColor blackColor];
+}
+
+#pragma mark
 
 //可以重复使用该方法.
 -(void)displayVedioFromDevice:(AVCaptureDevice *) device{
@@ -94,27 +158,10 @@ AVCaptureMetadataOutputObjectsDelegate
     _captureSession = [[AVCaptureSession alloc]init];
     _captureSession.sessionPreset = AVCaptureSessionPresetHigh;
     //添加输入流
-    if(!_input) {
-        NSLog(@"这是模拟器!没有照相机!!");
-        UILabel *layer = [UILabel new];
-        layer.frame = self.bounds;
-        layer.text = @"请在设置中开启相机权限";
-        layer.font = [UIFont systemFontOfSize:30];
-        layer.textAlignment = NSTextAlignmentCenter;
-        layer.textColor = [UIColor blackColor];
-        [self addSubview:layer];
-        return;
-    }
-    @try {
-        [_captureSession addInput:input];
-    } @catch (NSException *exception) {
-        return;
-    } @finally {
-        
-    }
+    [_captureSession addInput:input];
     //初始化输出流
-//    AVCaptureVideoDataOutput
-//    AVCaptureMetadataOutput
+    //    AVCaptureVideoDataOutput
+    //    AVCaptureMetadataOutput
     AVCaptureMetadataOutput *captureMetadataOutput = [[AVCaptureMetadataOutput alloc]init];
     _output = captureMetadataOutput;
     //设置视频的格式
@@ -144,13 +191,17 @@ AVCaptureMetadataOutputObjectsDelegate
     [self adjustOrientation];
     
     [self startScanning];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self setNeedsLayout];
+    });
     
 }
 
-
-
-- (void)configLimitInterestRect:(BOOL)shouldLimitInterestRect {
-    _limitInterestRect = shouldLimitInterestRect;
+//设置兴趣点和中心.但是必须自己的bounds确定后才能正确设置.那就只能在layoutSubview中设置了.
+- (void)setInterestSize:(CGSize)size centerPoint:(CGPoint)point {
+    _sizeInterestRc = size;
+    _ptInterestRcCenter = point;
+    [self setNeedsLayout];
 }
 
 - (void)adjustOrientation {
@@ -173,31 +224,30 @@ AVCaptureMetadataOutputObjectsDelegate
     [super layoutSubviews];
     //设置layer的位置
     _captureVideoPreviewLayer.frame = self.bounds;
-    //设置兴趣点
-    if (_scanImage) {
-        if(!_imageView) {
-            _imageView = [[UIImageView alloc]init];
-            [self addSubview:_imageView];
-            //            [self.layer addSublayer:_imageLayer];
-            //            _imageLayer.backgroundColor = [UIColor redColor].CGColor;
-        }
-        _imageView.frame = _scanFrame;
-        _imageView.image = _scanImage;
-        
-        [self setLimitInterestRect:_limitInterestRect];
+    if(CGSizeEqualToSize(_sizeInterestRc, CGSizeZero)) {
+        [_scanMaskView setScanRect:self.bounds];
     }
+    else {
+        CGPoint ptOrigin = CGPointMake(_ptInterestRcCenter.x-_sizeInterestRc.width/2, _ptInterestRcCenter.y-_sizeInterestRc.height/2);
+        _rcInterest = CGRectMake(ptOrigin.x, ptOrigin.y, _sizeInterestRc.width, _sizeInterestRc.height);
+        [_scanMaskView setScanRect:_rcInterest];
+        CGRect metadataRect = [_captureVideoPreviewLayer metadataOutputRectOfInterestForRect:_rcInterest];
+        _output.rectOfInterest = metadataRect;
+    }
+    [_scanMaskView showInSuperview:self];
 }
 
 
 - (void)startScanning {
-    //开始扫描
     if(_input) {
         [_captureSession startRunning];
+        [_scanMaskView startScanning];
     }
 }
 
 - (void)stopScanning {
     [_captureSession stopRunning];
+    [_scanMaskView stopScanning];
 }
 
 
@@ -211,7 +261,6 @@ AVCaptureMetadataOutputObjectsDelegate
         //判断的扫描的结果是否是二维码
         if ([[metadataObject type] isEqualToString:AVMetadataObjectTypeQRCode]) {
             result = metadataObject.stringValue;
-            //            NSLog(@"扫描到了");
             [self stopScanning];
             if([_delegate respondsToSelector:@selector(gaScanView:didScanInfo:)]) {
                 [_delegate gaScanView:self didScanInfo:result];
@@ -221,34 +270,6 @@ AVCaptureMetadataOutputObjectsDelegate
         }
     }
 }
-
-
-- (void)setLimitInterestRect:(BOOL)limitInterestRect {
-    _limitInterestRect = limitInterestRect;
-    if (_limitInterestRect) {
-        if(_captureVideoPreviewLayer) {
-            CGRect metadataRect = [_captureVideoPreviewLayer metadataOutputRectOfInterestForRect:_scanFrame];
-            _output.rectOfInterest = metadataRect;
-        }
-    }
-    else {
-        _output.rectOfInterest = CGRectMake(0,0 ,1,1);
-    }
-}
-
-
-
-//切换前置、后置摄像头
-//- (AVCaptureDevice *)cameraWithPostion:(AVCaptureDevicePosition)position{
-//    AVCaptureDeviceDiscoverySession *devicesIOS10 = [AVCaptureDeviceDiscoverySession  discoverySessionWithDeviceTypes:@[AVCaptureDeviceTypeBuiltInWideAngleCamera] mediaType:AVMediaTypeVideo position:position];
-//    NSArray *devicesIOS  = devicesIOS10.devices;
-//    for (AVCaptureDevice *device in devicesIOS) {
-//        if ([device position] == position) {
-//            return device;
-//        }
-//    }
-//    return nil;
-//}
 
 
 - (AVCaptureDevice *)cameraWithPosition:(AVCaptureDevicePosition)position {
@@ -283,4 +304,7 @@ AVCaptureMetadataOutputObjectsDelegate
 }
 
 @end
+
+
+
 

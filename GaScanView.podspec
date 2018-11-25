@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   # 控件名称
   s.name         = "GaScanView"
   # 控件版本
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   # 描述信息
   s.summary      = "GaScanView is a conveniece control that scan QR code!"
 
@@ -97,7 +97,7 @@ Pod::Spec.new do |s|
   # 指定别人使用的时候导入的是什么文件
   # 第一个是什么???
   # 第二个是指定库文件,是相对于ProjectDir的.
-  s.source_files  = "GaScanView", "GaLib/GaScanView/*.{h,m}"
+  s.source_files  = "GaScanView", "GaScanView/*.{h,m}"
   s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"

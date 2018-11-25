@@ -13,7 +13,8 @@
 		DCAF902D21A7EE5200329453 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAF902C21A7EE5200329453 /* main.m */; };
 		DCAF903E21A7EED100329453 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAF903C21A7EED100329453 /* MainViewController.m */; };
 		DCAF903F21A7EED100329453 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCAF903D21A7EED100329453 /* MainViewController.xib */; };
-		DCF88C0A21A9432700D4D1DF /* GaScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF88C0821A9432700D4D1DF /* GaScanView.m */; };
+		DCD4E43C21AA53C9005567A1 /* GaScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD4E43A21AA53C9005567A1 /* GaScanView.m */; };
+		DCD4E43F21AA89C3005567A1 /* GaScanMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD4E43E21AA89C3005567A1 /* GaScanMaskView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +28,10 @@
 		DCAF903B21A7EED100329453 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		DCAF903C21A7EED100329453 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		DCAF903D21A7EED100329453 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		DCF88C0821A9432700D4D1DF /* GaScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GaScanView.m; sourceTree = "<group>"; };
-		DCF88C0921A9432700D4D1DF /* GaScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GaScanView.h; sourceTree = "<group>"; };
+		DCD4E43A21AA53C9005567A1 /* GaScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GaScanView.m; sourceTree = "<group>"; };
+		DCD4E43B21AA53C9005567A1 /* GaScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GaScanView.h; sourceTree = "<group>"; };
+		DCD4E43D21AA89C3005567A1 /* GaScanMaskView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GaScanMaskView.h; sourceTree = "<group>"; };
+		DCD4E43E21AA89C3005567A1 /* GaScanMaskView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GaScanMaskView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,27 +137,21 @@
 		DCAF903A21A7EEAF00329453 /* 6_Utility */ = {
 			isa = PBXGroup;
 			children = (
-				DCF88C0621A9432700D4D1DF /* GaLib */,
+				DCD4E43921AA53C9005567A1 /* GaScanView */,
 			);
 			path = 6_Utility;
 			sourceTree = "<group>";
 		};
-		DCF88C0621A9432700D4D1DF /* GaLib */ = {
+		DCD4E43921AA53C9005567A1 /* GaScanView */ = {
 			isa = PBXGroup;
 			children = (
-				DCF88C0721A9432700D4D1DF /* GaScanView */,
-			);
-			path = GaLib;
-			sourceTree = SOURCE_ROOT;
-		};
-		DCF88C0721A9432700D4D1DF /* GaScanView */ = {
-			isa = PBXGroup;
-			children = (
-				DCF88C0821A9432700D4D1DF /* GaScanView.m */,
-				DCF88C0921A9432700D4D1DF /* GaScanView.h */,
+				DCD4E43B21AA53C9005567A1 /* GaScanView.h */,
+				DCD4E43A21AA53C9005567A1 /* GaScanView.m */,
+				DCD4E43D21AA89C3005567A1 /* GaScanMaskView.h */,
+				DCD4E43E21AA89C3005567A1 /* GaScanMaskView.m */,
 			);
 			path = GaScanView;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -227,9 +224,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCAF902D21A7EE5200329453 /* main.m in Sources */,
+				DCD4E43F21AA89C3005567A1 /* GaScanMaskView.m in Sources */,
 				DCAF903E21A7EED100329453 /* MainViewController.m in Sources */,
 				DCAF901F21A7EE5000329453 /* AppDelegate.m in Sources */,
-				DCF88C0A21A9432700D4D1DF /* GaScanView.m in Sources */,
+				DCD4E43C21AA53C9005567A1 /* GaScanView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

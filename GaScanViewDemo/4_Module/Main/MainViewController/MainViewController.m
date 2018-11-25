@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "GaScanView.h"
+#import "GaScanMaskView.h"
 
 @interface MainViewController ()<
 GaScanViewDelegate
@@ -15,6 +16,7 @@ GaScanViewDelegate
 
 
 @property (weak, nonatomic) IBOutlet GaScanView *scanView;
+@property (strong, nonatomic) GaScanMaskView *maskView;
 
 @end
 
@@ -26,6 +28,15 @@ GaScanViewDelegate
     _scanView.delegate = self;
     
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    [_maskView showInSuperview:self.view];
 }
 
 /*
@@ -50,4 +61,8 @@ GaScanViewDelegate
     [_scanView swapFrontAndBackCameras];
 }
 
+- (IBAction)clickSetInterestRectBtn:(id)sender {
+    CGSize size = _scanView.bounds.size;
+    [_scanView setInterestSize:CGSizeMake(100, 100) centerPoint:CGPointMake(size.width/2, size.height/2)];
+}
 @end

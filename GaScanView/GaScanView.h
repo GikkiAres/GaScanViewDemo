@@ -4,7 +4,8 @@
 //
 //  Created by GikkiAres on 05/06/2017.
 //  Copyright © 2017 HeartFollowerCom. All rights reserved.
-//  Version 0.0.1
+//  Current Version:0.0.2   20181125
+//  Previous Version:0.0.1  20181124
 
 #import <UIKit/UIKit.h>
 @class GaScanView;
@@ -19,13 +20,8 @@
 @interface GaScanView : UIView
 @property (nonatomic,weak)id <GaScanViewDelegate> delegate;
 
-@property (nonatomic,assign) CGRect scanFrame;
-@property (nonatomic,strong) UIImage *scanImage;
-@property (nonatomic,assign) BOOL limitInterestRect;
-
-
 - (void)startScanning;
 - (void)stopScanning;
-- (void)configLimitInterestRect:(BOOL)shouldLimitInterestRect;
+- (void)setInterestSize:(CGSize)size centerPoint:(CGPoint)point;
 - (void)swapFrontAndBackCameras;
 @end
