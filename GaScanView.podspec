@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
                   GaScanView is a conveniece control that scan QR code.Have a try...
                    DESC
   # 主页信息,可以随便写么?默认会报警告,设置为github的页面吧
-  s.homepage     = "https://github.com/GikkiAres/GaScanViewDemo"
+  s.homepage     = "http://www.tinywind.top"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -97,7 +97,7 @@ Pod::Spec.new do |s|
   # 指定别人使用的时候导入的是什么文件
   # 第一个是什么???
   # 第二个是指定库文件,是相对于ProjectDir的.
-  s.source_files  = "GaScanView", "GaScanView/*.{h,m}"
+  s.source_files  = "GaScanView/*.{h,m}"
   s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
